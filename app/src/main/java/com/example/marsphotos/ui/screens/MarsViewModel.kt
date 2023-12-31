@@ -30,7 +30,7 @@ import java.io.IOException
  * UI state for the Home screen
  */
 sealed interface MarsUiState {
-    data class Success(val photos: String) : MarsUiState
+    data class Success(val photos: List<MarsPhoto>) : MarsUiState
     object Error : MarsUiState
     object Loading : MarsUiState
 }
@@ -57,7 +57,7 @@ class MarsViewModel : ViewModel() {
             marsUiState = try {
                 val listResult = MarsApi.retrofitService.getPhotos()
                 MarsUiState.Success(
-                    "Success: ${listResult.size} Mars photos retrieved"
+                    listResult
                 )
             } catch (e: IOException) {
                 MarsUiState.Error

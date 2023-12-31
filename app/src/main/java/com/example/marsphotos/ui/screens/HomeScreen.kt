@@ -16,23 +16,38 @@
 package com.example.marsphotos.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.marsphotos.R
+import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun HomeScreen(
@@ -41,7 +56,7 @@ fun HomeScreen(
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is MarsUiState.Success -> ResultScreen(
-            marsUiState.photos, modifier = modifier.fillMaxWidth()
+            marsUiState.photos
         )
 
         is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
@@ -81,12 +96,60 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
  * ResultScreen displaying number of photos retrieved.
  */
 @Composable
-fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-    ) {
-        Text(text = photos)
+fun ResultScreen(photos: List<MarsPhoto>) {
+    LazyColumn {
+        items(photos) { photo ->
+            PhotoCard(photo)
+        }
+    }
+}
+
+@Composable
+fun PhotoCard(photo: MarsPhoto) {
+    // Adding padding around our message
+    Row(modifier = Modifier.padding(all = 8.dp)) {
+        Image(
+            // <a href="https://www.flaticon.com/free-icons/buildings" title="buildings icons">Buildings icons created by Freepik - Flaticon</a>
+            painter = painterResource(R.drawable.building_flaticon),
+            contentDescription = "Contact profile picture",
+            modifier = Modifier
+                // Set image size to 40 dp
+                .size(40.dp)
+                // Clip image to be shaped as a circle
+                .clip(CircleShape)
+                .border(1.5.dp, MaterialTheme.colorScheme.primary, CircleShape)
+        )
+        // Add a horizontal space between the image and the column
+        Spacer(modifier = Modifier.width(8.dp))
+
+        // We keep track if the message is expanded or not in this
+        // variable
+        var isExpanded by remember {
+            mutableStateOf(false)
+        }
+
+        // We toggle the isExpanded variable when we click on this Column
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
+            Text(
+                text = photo.name,
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.titleSmall
+            )
+
+            // Add a vertical space between the author and message texts
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Surface(shape = MaterialTheme.shapes.large, shadowElevation = 1.dp) {
+                Text(
+                    text = "Performa: ${photo.performance * 100}%\nLevel: ${photo.level}\nKota: ${photo.city}",
+                    modifier = Modifier.padding(all = 4.dp),
+                    // If the message is expanded, we display all its content
+                    // otherwise we only display the first line
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 3,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        }
     }
 }
 
@@ -103,13 +166,5 @@ fun LoadingScreenPreview() {
 fun ErrorScreenPreview() {
     MarsPhotosTheme {
         ErrorScreen()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PhotosGridScreenPreview() {
-    MarsPhotosTheme {
-        ResultScreen(stringResource(R.string.placeholder_success))
     }
 }
