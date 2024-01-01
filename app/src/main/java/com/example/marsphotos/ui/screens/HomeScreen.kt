@@ -58,7 +58,6 @@ fun HomeScreen(
         is MarsUiState.Success -> ResultScreen(
             marsUiState.photos
         )
-
         is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
 }
@@ -141,7 +140,7 @@ fun PhotoCard(photo: MarsPhoto) {
 
             Surface(shape = MaterialTheme.shapes.large, shadowElevation = 1.dp) {
                 Text(
-                    text = "Performa: ${photo.performance * 100}%\nLevel: ${photo.level}\nKota: ${photo.city}",
+                    text = "Performance: ${photo.performance?.times(100)}%\nLevel: ${photo.level}\nCity: ${photo.city}",
                     modifier = Modifier.padding(all = 4.dp),
                     // If the message is expanded, we display all its content
                     // otherwise we only display the first line

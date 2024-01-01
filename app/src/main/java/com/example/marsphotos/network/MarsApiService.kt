@@ -20,11 +20,17 @@ import com.example.marsphotos.model.MarsPhoto
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.http.Body
+import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.POST
 
-    private const val BASE_URL =
+private const val BASE_URL =
         "https://akbarbin.pythonanywhere.com"
+
+//private const val BASE_URL = "https://00f7-36-70-39-162.ngrok-free.app"
 
 /**
  * Use the Retrofit builder to build a retrofit object using a kotlinx.serialization converter
@@ -40,6 +46,17 @@ private val retrofit = Retrofit.Builder()
 interface MarsApiService {
     @GET("api/buildings")
     suspend fun getPhotos(): List<MarsPhoto>
+
+    @POST("api/buildings")
+    suspend fun createPhoto(
+        @Body marsPhoto: MarsPhoto
+    ): Response<MarsPhoto>
+
+//    @POST("api/buildings")
+//    suspend fun createPhoto(
+//        @Field()
+//        @Body marsPhoto: MarsPhoto
+//    ): Response<MarsPhoto>
 }
 
 /**

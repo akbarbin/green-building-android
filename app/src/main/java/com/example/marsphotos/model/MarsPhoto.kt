@@ -58,7 +58,7 @@ data class MarsPhoto(
     val p30: String,
     val p31: String,
     val p32: String,
-    val p33: Float,
+    val p33: Double,
     val p34: Int,
     val p35: String,
     val p36: String,
@@ -77,17 +77,17 @@ data class MarsPhoto(
     val p49: String,
     val p50: String,
     @SerialName("p51_1")
-    val p511: Float,
+    val p511: Double,
     @SerialName("p51_2")
-    val p512: Float,
+    val p512: Double,
     @SerialName("p51_3")
-    val p513: Float,
+    val p513: Double,
     @SerialName("p51_4")
-    val p514: Float,
+    val p514: Double,
     @SerialName("p51_5")
-    val p515: Float,
+    val p515: Double,
     @SerialName("p51_6")
-    val p516: Float,
+    val p516: Double,
     val p52: String,
     val p53: String,
     val p54: String,
@@ -98,73 +98,73 @@ data class MarsPhoto(
     val p59: String,
     val p60: String,
     @SerialName("p61_1")
-    val p611: Float,
+    val p611: Double,
     @SerialName("p61_2")
-    val p612: Float,
+    val p612: Double,
     @SerialName("p61_3")
-    val p613: Float,
+    val p613: Double,
     @SerialName("p61_4")
-    val p614: Float,
+    val p614: Double,
     @SerialName("p61_5")
-    val p615: Float,
+    val p615: Double,
     @SerialName("p61_6")
-    val p616: Float,
+    val p616: Double,
     val p62: String,
-    val p63: Float,
+    val p63: Double,
     val p64: String,
     val p65: String,
     val p66: String,
     @SerialName("p67_1")
-    val p671: Float,
+    val p671: Double,
     @SerialName("p67_2")
-    val p672: Float,
+    val p672: Double,
     @SerialName("p68_1")
-    val p681: Float,
+    val p681: Double,
     @SerialName("p68_2")
-    val p682: Float,
+    val p682: Double,
     @SerialName("p68_3")
-    val p683: Float,
+    val p683: Double,
     @SerialName("p68_4")
-    val p684: Float,
+    val p684: Double,
     @SerialName("p68_5")
-    val p685: Float,
+    val p685: Double,
     @SerialName("p68_6")
-    val p686: Float,
-    val p69: Float,
+    val p686: Double,
+    val p69: Double,
     val p70: String,
-    val p71: Int,
-    val p72: Float,
-    val p73: Float,
+    val p71: String,
+    val p72: Double,
+    val p73: Double,
     val p74: String,
     val p75: String,
     val p76: String,
     val p77: String,
     val p78: String,
     @SerialName("p79_1")
-    val p791: Float,
+    val p791: Double,
     @SerialName("p79_2")
-    val p792: Float,
+    val p792: Double,
     @SerialName("p79_3")
-    val p793: Float,
+    val p793: Double,
     @SerialName("p79_4")
-    val p794: Float,
+    val p794: Double,
     @SerialName("p79_5")
-    val p795: Float,
+    val p795: Double,
     @SerialName("p79_6")
-    val p796: Float,
+    val p796: Double,
     val p80: String,
     val p81: String,
     val p82: String,
     val p83: String,
-    val id: Int,
-    val ax: Float,
-    val bx: Float,
-    val cx: Float,
-    val dx: Float,
-    val performance: Float,
-    val level: String,
-    val policy: Float,
-    val retrofit: Float,
-    val construction: Float,
-    val utilization: Float
+    val id: Int?,
+    val ax: Float?,
+    val bx: Float?,
+    val cx: Float?,
+    val dx: Float?,
+    val performance: Float?,
+    val level: String?,
+    val policy: Float?,
+    val retrofit: Float?,
+    val construction: Float?,
+    val utilization: Float?
 )

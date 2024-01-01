@@ -17,9 +17,9 @@ fun ScreenB(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Screen B")
+        Text(text = "The building has been successfully created.")
         Button(onClick = { navController.navigate("Home") }) {
-            Text(text = "Go To Home");
+            Text(text = "Check result");
         }
     }
 }

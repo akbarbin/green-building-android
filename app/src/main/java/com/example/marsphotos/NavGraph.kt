@@ -21,7 +21,5 @@ fun Nav() {
         composable(route = "B") {
             ScreenB(navController)
         }
-
-
     }
 }
