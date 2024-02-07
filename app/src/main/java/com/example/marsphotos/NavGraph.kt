@@ -1,5 +1,6 @@
 package com.example.marsphotos
 
+import BuildingScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,6 +13,21 @@ import com.example.marsphotos.ui.MarsPhotosApp
 fun Nav() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "Home") {
+
+        composable(
+            route = "Detail/{id}",
+            arguments = listOf(
+                navArgument(name = "id") {
+                    type = NavType.StringType
+                }
+            )
+        ) { blackstackEntry ->
+            BuildingScreen(
+                navController,
+                id = blackstackEntry.arguments?.getString("id")!!
+            )
+        }
+
         composable(route = "Home") {
             MarsPhotosApp(navController)
         }

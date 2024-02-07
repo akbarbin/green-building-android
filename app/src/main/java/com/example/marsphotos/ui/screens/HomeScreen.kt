@@ -48,15 +48,18 @@ import com.example.marsphotos.R
 import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.navigation.NavHostController
 
 @Composable
 fun HomeScreen(
-    marsUiState: MarsUiState, modifier: Modifier = Modifier
+    marsUiState: MarsUiState, navController: NavHostController, modifier: Modifier = Modifier
 ) {
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is MarsUiState.Success -> ResultScreen(
-            marsUiState.photos
+            marsUiState.photos,
+            navController
         )
         is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
@@ -95,16 +98,16 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
  * ResultScreen displaying number of photos retrieved.
  */
 @Composable
-fun ResultScreen(photos: List<MarsPhoto>) {
+fun ResultScreen(photos: List<MarsPhoto>, navController: NavHostController) {
     LazyColumn {
         items(photos) { photo ->
-            PhotoCard(photo)
+            PhotoCard(photo, navController)
         }
     }
 }
 
 @Composable
-fun PhotoCard(photo: MarsPhoto) {
+fun PhotoCard(photo: MarsPhoto, navController: NavHostController) {
     // Adding padding around our message
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
@@ -147,6 +150,16 @@ fun PhotoCard(photo: MarsPhoto) {
                     maxLines = if (isExpanded) Int.MAX_VALUE else 3,
                     style = MaterialTheme.typography.bodyMedium
                 )
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Button(
+                onClick = {
+                    navController.navigate("Detail/${photo.id}")
+                }
+            ) {
+                Text(text = "Show detail")
             }
         }
     }

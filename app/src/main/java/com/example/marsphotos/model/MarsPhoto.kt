@@ -163,8 +163,8 @@ data class MarsPhoto(
     val dx: Float? = 0.toFloat(),
     val performance: Float? = 0.toFloat(),
     val level: String? = null,
-    val policy: Float?,
-    val retrofit: Float?,
-    val construction: Float?,
-    val utilization: Float?
+    val policy: Float? = 0.toFloat(),
+    val retrofit: Float? = 0.toFloat(),
+    val construction: Float? = 0.toFloat(),
+    val utilization: Float? = 0.toFloat()
 )

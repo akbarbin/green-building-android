@@ -23,9 +23,9 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 private const val BASE_URL =
         "https://akbarbin.pythonanywhere.com"
@@ -47,16 +47,15 @@ interface MarsApiService {
     @GET("api/buildings")
     suspend fun getPhotos(): List<MarsPhoto>
 
+    @GET("api/buildings/{id}")
+    suspend fun getPhoto(
+        @Path("id") id: String
+    ): MarsPhoto
+
     @POST("api/buildings")
     suspend fun createPhoto(
         @Body marsPhoto: MarsPhoto
     ): Response<MarsPhoto>
-
-//    @POST("api/buildings")
-//    suspend fun createPhoto(
-//        @Field()
-//        @Body marsPhoto: MarsPhoto
-//    ): Response<MarsPhoto>
 }
 
 /**
