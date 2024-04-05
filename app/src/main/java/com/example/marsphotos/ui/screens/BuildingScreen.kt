@@ -15,8 +15,6 @@ import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.network.MarsApi
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 
 class MainViewModel : ViewModel() {

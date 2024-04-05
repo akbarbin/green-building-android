@@ -12,7 +12,11 @@ import com.example.marsphotos.ui.MarsPhotosApp
 @Composable
 fun Nav() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "Home") {
+    NavHost(navController = navController, startDestination = "Main") {
+
+        composable(route = "Main") {
+            ScreenMain(navController)
+        }
 
         composable(
             route = "Detail/{id}",
