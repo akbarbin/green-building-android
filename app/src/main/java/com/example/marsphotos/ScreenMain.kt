@@ -3,7 +3,9 @@ package com.example.marsphotos
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -20,17 +22,31 @@ import androidx.compose.material3.Icon
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Button
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenMain(navController: NavHostController) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = "Green Building Meter") }
+            CenterAlignedTopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary
+                ),
+                title = {
+                    Text(
+                        text = "Green Building Meter",
+                        style = MaterialTheme.typography.headlineSmall
+                    )
+                },
             )
         }
     ) {
@@ -45,29 +61,17 @@ fun ScreenMain(navController: NavHostController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Icon(
-                    Icons.Default.Home,
-                    contentDescription = "Reports",
-                    modifier = Modifier
-                        // Set image size to 40 dp
-                        .size(70.dp)
-                        // Clip image to be shaped as a circle
-                        .clip(CircleShape)
-                        .border(1.5.dp, MaterialTheme.colorScheme.primary, CircleShape)
-                )
-                Text(text = "Reports", modifier = Modifier.padding(16.dp))
+                Button(onClick = { navController.navigate("Home") }) {
+                    Icon(Icons.Default.Home, contentDescription = "Reports")
+                    Text(text = "Reports");
+                }
 
-                Icon(
-                    Icons.Default.Add,
-                    contentDescription = "Add",
-                    modifier = Modifier
-                        // Set image size to 40 dp
-                        .size(70.dp)
-                        // Clip image to be shaped as a circle
-                        .clip(CircleShape)
-                        .border(1.5.dp, MaterialTheme.colorScheme.primary, CircleShape)
-                )
-                Text(text = "Add", modifier = Modifier.padding(16.dp))
+                Spacer(modifier = Modifier.height(50.dp))
+
+                Button(onClick = { navController.navigate("A") }) {
+                    Icon(Icons.Default.Add, contentDescription = "Evaluate")
+                    Text(text = "Evaluate")
+                }
             }
         }
     }
