@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Icon
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -63,7 +65,7 @@ fun ScreenMain(navController: NavHostController) {
             ) {
                 Button(onClick = { navController.navigate("Home") }) {
                     Icon(Icons.Default.Home, contentDescription = "Reports")
-                    Text(text = "Reports");
+                    Text(text = "Reports")
                 }
 
                 Spacer(modifier = Modifier.height(50.dp))
@@ -71,6 +73,20 @@ fun ScreenMain(navController: NavHostController) {
                 Button(onClick = { navController.navigate("A") }) {
                     Icon(Icons.Default.Add, contentDescription = "Evaluate")
                     Text(text = "Evaluate")
+                }
+
+                Spacer(modifier = Modifier.height(50.dp))
+
+                Button(onClick = { navController.navigate("Guide") }) {
+                    Icon(Icons.Default.Info, contentDescription = "Guide")
+                    Text(text = "User Guide")
+                }
+
+                Spacer(modifier = Modifier.height(50.dp))
+
+                Button(onClick = { navController.navigate("About") }) {
+                    Icon(Icons.Default.Favorite, contentDescription = "About Apps")
+                    Text(text = "About Apps")
                 }
             }
         }

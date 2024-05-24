@@ -36,6 +36,14 @@ fun Nav() {
             MarsPhotosApp(navController)
         }
 
+        composable(route = "About") {
+            ScreenAbout(navController)
+        }
+
+        composable(route = "Guide") {
+            ScreenGuide(navController)
+        }
+
         composable(route = "A") {
             ScreenA(navController)
         }

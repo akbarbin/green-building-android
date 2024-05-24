@@ -92,7 +92,6 @@ fun CustomerDetail(customer: MarsPhoto?) {
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-//        Text(text = "Detail building", style = MaterialTheme.typography.headlineSmall)
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = "Name: ${customer?.name}", style = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.height(8.dp))
