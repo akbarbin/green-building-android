@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.marsphotos
+package com.example.greenbuildingmeter
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,7 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
-import com.example.marsphotos.ui.theme.MarsPhotosTheme
+import com.example.greenbuildingmeter.ui.theme.MarsPhotosTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

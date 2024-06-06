@@ -1,4 +1,4 @@
-package com.example.marsphotos
+package com.example.greenbuildingmeter
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,13 +38,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.marsphotos.model.MarsPhoto
-import com.example.marsphotos.network.MarsApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

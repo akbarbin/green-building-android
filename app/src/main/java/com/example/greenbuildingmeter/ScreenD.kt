@@ -1,4 +1,4 @@
-package com.example.marsphotos
+package com.example.greenbuildingmeter
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,14 +19,11 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenAbout(navController: NavHostController) {
+fun ScreenD(navController: NavHostController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -36,12 +33,12 @@ fun ScreenAbout(navController: NavHostController) {
                 ),
                 title = {
                     Text(
-                        text = "About",
+                        text = "Add building - Step 4",
                         style = MaterialTheme.typography.headlineSmall
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.navigate("Main") }) {
+                    IconButton(onClick = { navController.navigate("C") }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Localized description"
@@ -58,19 +55,14 @@ fun ScreenAbout(navController: NavHostController) {
             color = MaterialTheme.colorScheme.background
         ) {
             Column(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val text = """
-                    Selamat datang di Aplikasi Green Building Meter. Aplikasi ini merupakan memiliki kemampuan untuk mengukur tingkat hijau dari suatu gedung dengan mengisi beberapa pertanyaan terkait kebijakan, retrofit, konstruksi dan pemanfaatan gedung. Setelah data tersebut diisi maka aplikasi akan menghitung nilai hijau gedung. Sehingga nilai tersebut dapat digunakan untuk membantu dalam mengetahui tingkat hijau gedung. Segala pertanyaan yang ada pada aplikasi ini mengacu pada dokumen Peraturan Menteri Pekerjaan Umum Dan Perumahan Rakyat tentang Penilaian Kinerja Bangunan Gedung Hijau Nomor 21 Tahun 2021 khusus untuk Bangunan Yang Sudah Ada atau Berjalan.
-                    
-                    Kami bersyukur atas kesempatan dan dukungan yang diberikan oleh Universitas Bina Nusantara. Selain itu, kami berterima kasih atas pendanaan yang diberikan oleh Kementerian Riset, Teknologi, dan Pendidikan Tinggi (Kemenristekdikti) Republik Indonesia, yang memungkinkan kami untuk melaksanakan penelitian ini melalui program penelitian untuk tesis magister (Anggaran Kemenristekdikti 2023 No: 149/VR.RTT/VII/2023).
-                """.trimIndent()
-
-                Text(
-                    text = text,
-                    style = TextStyle(fontSize = 16.sp),
-                    modifier = Modifier.padding(8.dp)
-                )
+                Text(text = "The building has been successfully created.")
+                Button(onClick = { navController.navigate("Home") }) {
+                    Text(text = "Check result")
+                }
             }
         }
     }
