@@ -1,4 +1,4 @@
-package com.example.greenbuildingmeter
+package com.mycompany.greenbuildingmeter
 
 import BuildingScreen
 import androidx.compose.runtime.Composable
@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.greenbuildingmeter.ui.MarsPhotosApp
+import com.mycompany.greenbuildingmeter.ui.MarsPhotosApp
 
 @Composable
 fun Nav() {

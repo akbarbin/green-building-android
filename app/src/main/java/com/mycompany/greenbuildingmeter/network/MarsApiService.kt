@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.greenbuildingmeter.network
+package com.mycompany.greenbuildingmeter.network
 
-import com.example.greenbuildingmeter.model.MarsPhoto
+import com.mycompany.greenbuildingmeter.model.MarsPhoto
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

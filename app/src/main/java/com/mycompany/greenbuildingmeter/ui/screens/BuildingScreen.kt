@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.greenbuildingmeter.model.MarsPhoto
-import com.example.greenbuildingmeter.network.MarsApi
+import com.mycompany.greenbuildingmeter.model.MarsPhoto
+import com.mycompany.greenbuildingmeter.network.MarsApi
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons

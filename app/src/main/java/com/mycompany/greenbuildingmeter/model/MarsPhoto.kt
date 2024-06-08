@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.greenbuildingmeter.model
+package com.mycompany.greenbuildingmeter.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

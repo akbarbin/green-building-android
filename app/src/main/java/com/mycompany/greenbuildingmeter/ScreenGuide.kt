@@ -1,4 +1,4 @@
-package com.example.greenbuildingmeter
+package com.mycompany.greenbuildingmeter
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.greenbuildingmeter.ui.theme
+package com.mycompany.greenbuildingmeter.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

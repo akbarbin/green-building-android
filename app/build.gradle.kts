@@ -23,11 +23,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.greenbuildingmeter"
+    namespace = "com.mycompany.greenbuildingmeter"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.greenbuildingmeter"
+        applicationId = "com.mycompany.greenbuildingmeter"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

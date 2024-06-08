@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.greenbuildingmeter.ui.screens
+package com.mycompany.greenbuildingmeter.ui.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.greenbuildingmeter.model.MarsPhoto
-import com.example.greenbuildingmeter.network.MarsApi
+import com.mycompany.greenbuildingmeter.model.MarsPhoto
+import com.mycompany.greenbuildingmeter.network.MarsApi
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException

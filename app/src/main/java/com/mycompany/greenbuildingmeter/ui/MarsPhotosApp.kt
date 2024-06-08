@@ -16,7 +16,7 @@
 
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.greenbuildingmeter.ui
+package com.mycompany.greenbuildingmeter.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -39,8 +39,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.greenbuildingmeter.ui.screens.HomeScreen
-import com.example.greenbuildingmeter.ui.screens.MarsViewModel
+import com.mycompany.greenbuildingmeter.ui.screens.HomeScreen
+import com.mycompany.greenbuildingmeter.ui.screens.MarsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
