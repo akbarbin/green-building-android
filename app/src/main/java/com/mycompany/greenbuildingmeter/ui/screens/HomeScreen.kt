@@ -45,7 +45,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mycompany.greenbuildingmeter.R
-import com.mycompany.greenbuildingmeter.model.MarsPhoto
+import com.mycompany.greenbuildingmeter.model.Building
 import com.mycompany.greenbuildingmeter.ui.theme.MarsPhotosTheme
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -53,15 +53,15 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun HomeScreen(
-    marsUiState: MarsUiState, navController: NavHostController, modifier: Modifier = Modifier
+    buildingsUiState: BuildingsUiState, navController: NavHostController, modifier: Modifier = Modifier
 ) {
-    when (marsUiState) {
-        is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is MarsUiState.Success -> ResultScreen(
-            marsUiState.photos,
+    when (buildingsUiState) {
+        is BuildingsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+        is BuildingsUiState.Success -> ResultScreen(
+            buildingsUiState.buildings,
             navController
         )
-        is MarsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
+        is BuildingsUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
 }
 
@@ -98,7 +98,7 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
  * ResultScreen displaying number of photos retrieved.
  */
 @Composable
-fun ResultScreen(photos: List<MarsPhoto>, navController: NavHostController) {
+fun ResultScreen(photos: List<Building>, navController: NavHostController) {
     LazyColumn {
         items(photos) { photo ->
             PhotoCard(photo, navController)
@@ -107,7 +107,7 @@ fun ResultScreen(photos: List<MarsPhoto>, navController: NavHostController) {
 }
 
 @Composable
-fun PhotoCard(photo: MarsPhoto, navController: NavHostController) {
+fun PhotoCard(photo: Building, navController: NavHostController) {
     // Adding padding around our message
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(

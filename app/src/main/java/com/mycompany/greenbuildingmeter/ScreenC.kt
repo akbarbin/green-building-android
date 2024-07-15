@@ -38,8 +38,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.mycompany.greenbuildingmeter.model.MarsPhoto
-import com.mycompany.greenbuildingmeter.network.MarsApi
+import com.mycompany.greenbuildingmeter.model.Building
+import com.mycompany.greenbuildingmeter.network.BuildingsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -1142,9 +1142,9 @@ fun ScreenC(
 
                 Button(
                     onClick = {
-                        val marsPhoto = MarsPhoto(name, city, p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50, p511, p512, p513, p514, p515, p516, p52, p53, p54, p55, p56, p57, p58, p59, p60, p611.toFloat(), p612.toFloat(), p613.toFloat(), p614.toFloat(), p615.toFloat(), p616.toFloat(), p62, p63.toFloat(), p64, p65, p66, p671.toFloat(), p672.toFloat(), p681.toFloat(), p682.toFloat(), p683.toFloat(), p684.toFloat(), p685.toFloat(), p686.toFloat(), p69.toFloat(), p70, p71, p72.toFloat(), p73.toFloat(), p74, p75, p76, p77, p78, p791.toFloat(), p792.toFloat(), p793.toFloat(), p794.toFloat(), p795.toFloat(), p796.toFloat(), p80, p81, p82, p83, null, null, null, null, null, null, null, null, null, null, null)
+                        val building = Building(name, city, p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50, p511, p512, p513, p514, p515, p516, p52, p53, p54, p55, p56, p57, p58, p59, p60, p611.toFloat(), p612.toFloat(), p613.toFloat(), p614.toFloat(), p615.toFloat(), p616.toFloat(), p62, p63.toFloat(), p64, p65, p66, p671.toFloat(), p672.toFloat(), p681.toFloat(), p682.toFloat(), p683.toFloat(), p684.toFloat(), p685.toFloat(), p686.toFloat(), p69.toFloat(), p70, p71, p72.toFloat(), p73.toFloat(), p74, p75, p76, p77, p78, p791.toFloat(), p792.toFloat(), p793.toFloat(), p794.toFloat(), p795.toFloat(), p796.toFloat(), p80, p81, p82, p83, null, null, null, null, null, null, null, null, null, null, null)
                         //            val marsPhoto = MarsPhoto(name, city, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 0.0, 634, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 3000.0, 4000.0, 5000.0, 4000.0, 7000.0, 1500.0, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 4000000.0, 5000000.0, 4000000.0, 4000000.0, 5000000.0, 4400000.0, "Yes",500000000.0, "Yes", "Yes", "Yes", 5.0, 5.0, 4000000.0, 4000000.0, 4000000.0, 4000000.0, 4000000.0, 4200000.0, 10000000.0, "Yes", "2022-12-09", 23.0, 36.0, "Yes", "Yes", "Yes", "Yes", "Yes", 33.48, 32.40, 34.56, 29.64, 16.44, 35.76, "Yes", "Yes", "Yes", "Yes", null, null, null, null, null, null, null, null, null, null, null)
-                        createMarsPhoto(marsPhoto)
+                        createMarsPhoto(building)
                         navController.navigate("D")
                     },
                     enabled = isEnabledUtilizationNextButton(isp611Error, isp612Error, isp613Error, isp614Error, isp615Error, isp616Error, isp671Error, isp672Error, isp681Error, isp682Error, isp683Error, isp684Error, isp685Error, isp686Error, isp69Error, isp71Error, isp72Error, isp73Error, isp791Error, isp792Error, isp793Error, isp794Error, isp795Error, isp796Error)
@@ -1158,10 +1158,10 @@ fun ScreenC(
     }
 }
 
-fun createMarsPhoto(marsPhoto: MarsPhoto) {
+fun createMarsPhoto(building: Building) {
     GlobalScope.launch(Dispatchers.IO) {
         try {
-            MarsApi.retrofitService.createPhoto(marsPhoto)
+            BuildingsApi.retrofitService.createBuilding(building)
         } catch (e: IOException) {
         } catch (e: HttpException) {
         }

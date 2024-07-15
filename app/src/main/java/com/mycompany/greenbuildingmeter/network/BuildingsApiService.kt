@@ -16,7 +16,7 @@
 
 package com.mycompany.greenbuildingmeter.network
 
-import com.mycompany.greenbuildingmeter.model.MarsPhoto
+import com.mycompany.greenbuildingmeter.model.Building
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -43,26 +43,26 @@ private val retrofit = Retrofit.Builder()
 /**
  * Retrofit service object for creating api calls
  */
-interface MarsApiService {
+interface BuildingsApiService {
     @GET("api/buildings")
-    suspend fun getPhotos(): List<MarsPhoto>
+    suspend fun getBuildings(): List<Building>
 
     @GET("api/buildings/{id}")
-    suspend fun getPhoto(
+    suspend fun getBuilding(
         @Path("id") id: String
-    ): MarsPhoto
+    ): Building
 
     @POST("api/buildings")
-    suspend fun createPhoto(
-        @Body marsPhoto: MarsPhoto
-    ): Response<MarsPhoto>
+    suspend fun createBuilding(
+        @Body marsPhoto: Building
+    ): Response<Building>
 }
 
 /**
  * A public Api object that exposes the lazy-initialized Retrofit service
  */
-object MarsApi {
-    val retrofitService: MarsApiService by lazy {
-        retrofit.create(MarsApiService::class.java)
+object BuildingsApi {
+    val retrofitService: BuildingsApiService by lazy {
+        retrofit.create(BuildingsApiService::class.java)
     }
 }

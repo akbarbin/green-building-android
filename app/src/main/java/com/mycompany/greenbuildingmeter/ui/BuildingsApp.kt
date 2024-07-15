@@ -61,7 +61,7 @@ fun MarsPhotosApp(navController: NavHostController) {
                 .padding(it)
         ) {
             val marsViewModel: MarsViewModel = viewModel()
-            HomeScreen(marsUiState = marsViewModel.marsUiState, navController)
+            HomeScreen(buildingsUiState = marsViewModel.buildingsUiState, navController)
         }
     }
 }

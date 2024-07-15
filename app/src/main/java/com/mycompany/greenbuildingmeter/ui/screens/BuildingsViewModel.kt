@@ -20,8 +20,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mycompany.greenbuildingmeter.model.MarsPhoto
-import com.mycompany.greenbuildingmeter.network.MarsApi
+import com.mycompany.greenbuildingmeter.model.Building
+import com.mycompany.greenbuildingmeter.network.BuildingsApi
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -29,40 +29,40 @@ import java.io.IOException
 /**
  * UI state for the Home screen
  */
-sealed interface MarsUiState {
-    data class Success(val photos: List<MarsPhoto>) : MarsUiState
-    object Error : MarsUiState
-    object Loading : MarsUiState
+sealed interface BuildingsUiState {
+    data class Success(val buildings: List<Building>) : BuildingsUiState
+    object Error : BuildingsUiState
+    object Loading : BuildingsUiState
 }
 
 class MarsViewModel : ViewModel() {
     /** The mutable State that stores the status of the most recent request */
-    var marsUiState: MarsUiState by mutableStateOf(MarsUiState.Loading)
+    var buildingsUiState: BuildingsUiState by mutableStateOf(BuildingsUiState.Loading)
         private set
 
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
      */
     init {
-        getMarsPhotos()
+        getBuildings()
     }
 
     /**
      * Gets Mars photos information from the Mars API Retrofit service and updates the
-     * [MarsPhoto] [List] [MutableList].
+     * [Building] [List] [MutableList].
      */
-    private fun getMarsPhotos() {
+    private fun getBuildings() {
         viewModelScope.launch {
-            marsUiState = MarsUiState.Loading
-            marsUiState = try {
-                val listResult = MarsApi.retrofitService.getPhotos()
-                MarsUiState.Success(
+            buildingsUiState = BuildingsUiState.Loading
+            buildingsUiState = try {
+                val listResult = BuildingsApi.retrofitService.getBuildings()
+                BuildingsUiState.Success(
                     listResult
                 )
             } catch (e: IOException) {
-                MarsUiState.Error
+                BuildingsUiState.Error
             } catch (e: HttpException) {
-                MarsUiState.Error
+                BuildingsUiState.Error
             }
         }
     }

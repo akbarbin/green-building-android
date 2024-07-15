@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.mycompany.greenbuildingmeter.model.MarsPhoto
-import com.mycompany.greenbuildingmeter.network.MarsApi
+import com.mycompany.greenbuildingmeter.model.Building
+import com.mycompany.greenbuildingmeter.network.BuildingsApi
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -20,12 +20,12 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.Alignment
 
 class MainViewModel : ViewModel() {
-    private val _customerData = mutableStateOf<MarsPhoto?>(null)
-    val customerData: State<MarsPhoto?> = _customerData
+    private val _customerData = mutableStateOf<Building?>(null)
+    val customerData: State<Building?> = _customerData
     fun getCustomerDetail(customerId: String) {
         viewModelScope.launch {
             try {
-                val response = MarsApi.retrofitService.getPhoto(customerId)
+                val response = BuildingsApi.retrofitService.getBuilding(customerId)
                 _customerData.value = response
             } catch (e: Exception) {
                 Log.d("MyActivity", "error $e")
@@ -85,7 +85,7 @@ fun BuildingScreen(
 }
 
 @Composable
-fun CustomerDetail(customer: MarsPhoto?) {
+fun CustomerDetail(customer: Building?) {
     Column(
         modifier = Modifier
             .padding(8.dp, 8.dp),
